@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /* Core UI Colors */
+    --display-bg: #1A1A1A;
+    --display-text: #FFFFFF;
+
+    /* Buttons */
+    --btn-bg: #F4F4F4;
+    --btn-text: #333333;
+
+    /* Operators */
+    --operator-bg: #ECECEC;
+
+    /* Special Buttons */
+    --btn-clear-bg: #F38B36;
+    --btn-equal-bg: #2F84E9;
+
+    /* Layout / Container */
+    --calculator-body: #E8E6E4;
+
+    /* Shadows */
+    --btn-shadow: #D0D0D0;
+    --outer-shadow: rgba(0, 0, 0, 0.15);
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.calculator {
+    background: var(--calculator-body);
+    width: 300px;
+    padding: 5px;
+}
+
+.calculator .display {
+    width: 100%;
+    min-height: 50px;
+    background: var(--display-bg);
+    color: var(--display-text);
+    text-align: right;
+    font-size: 20px;
+    padding: 5px;
+    
+    /* This line of code allows me to break the word into other lines when its to long to contain on one line */
+    white-space: normal;      
+    word-wrap: break-word;   
+    overflow-wrap: break-word;
+    overflow: hidden;  
+}
+
+.display .down_display{ 
+    display: flex;
+    justify-content: space-between;
+}
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 2px;
+
+}
+
+.btn {
+    height: 40px;
+    cursor: pointer;
+    /* background-color: var(--btn-bg); */
+    /* border: none; */
+
+}
+#equal_btn {
+    grid-column: 1 / -1;
+}

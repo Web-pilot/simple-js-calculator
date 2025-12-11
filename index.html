@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="calculator">
+        <div class="display" id="display">
+
+            <p class="top_display">0</p>
+            <p class="down_display">
+                <span id="operator_display"></span>
+                <span id="result_display"></span>
+            </p>
+        </div>
+
+        <div class="buttons">
+          <button class="btn" data-type="clear">C</button>
+          <button class="btn" data-type="operator">/</button>
+          <button class="btn" data-type="operator">*</button>
+          <button class="btn" data-type="operator">-</button>
+
+          <button class="btn" data-type="number">7</button>
+          <button class="btn" data-type="number">8</button>
+          <button class="btn" data-type="number">9</button>
+          <button class="btn" data-type="operator">+</button>
+
+          <button class="btn" data-type="number">4</button>
+          <button class="btn" data-type="number">5</button>
+          <button class="btn" data-type="number">6</button>
+           <button class="btn" data-type="number">.</button>
+         
+
+          <button class="btn" data-type="number">1</button>
+          <button class="btn" data-type="number">2</button>
+          <button class="btn" data-type="number">3</button>
+
+          <button class="btn zero" data-type="number">0</button>
+          <button class="btn equal" data-type="equal" id="equal_btn">=</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
