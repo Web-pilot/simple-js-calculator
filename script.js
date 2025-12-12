@@ -14,6 +14,7 @@ const buttons = document.querySelectorAll(".btn");
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
     // Clear the input
+    
     if (btn.dataset.type == "clear") {
       operatorDisplay.textContent = "";
       topDisplay.textContent = 0;
@@ -90,7 +91,6 @@ buttons.forEach((btn) => {
           break;
 
         case "*":
-          console.log("multiplication")
           result = operand1 * operand2;
           topDisplay.textContent = result;
           operatorDisplay.textContent = "";
