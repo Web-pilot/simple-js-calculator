@@ -1,74 +1,195 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-    /* Core UI Colors */
-    --display-bg: #1A1A1A;
-    --display-text: #FFFFFF;
-
-    /* Buttons */
-    --btn-bg: #F4F4F4;
-    --btn-text: #333333;
-
-    /* Operators */
-    --operator-bg: #ECECEC;
-
-    /* Special Buttons */
-    --btn-clear-bg: #F38B36;
-    --btn-equal-bg: #2F84E9;
-
-    /* Layout / Container */
-    --calculator-body: #E8E6E4;
-
-    /* Shadows */
-    --btn-shadow: #D0D0D0;
-    --outer-shadow: rgba(0, 0, 0, 0.15);
+  --display-bg: #1a1a1a;
+  --display-text: #ffffff;
+  --btn-bg: #f4f4f4;
+  --btn-text: #333333;
+  --operator-bg: #ececec;
+  --btn-clear-bg: #f38b36;
+  --btn-equal-bg: #2f84e9;
+  --calculator-body: #e8e6e4;
+  --btn-shadow: #d0d0d0;
+  --outer-shadow: rgba(0, 0, 0, 0.15);
 }
+
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
+html,
+body {
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAVBAR */
+/* Navbar styles */
+header {
+  position: fixed;
+  top: 0;
+  background-color: #1e1e1e;
+  color: white;
+  height: 50px;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff6347;
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin: 4px 0;
+  transition: all 0.3s;
+}
+
+main {
+  flex: 1;
+  margin: 0 auto;;
+}
+
 .calculator {
-    background: var(--calculator-body);
-    width: 300px;
-    padding: 5px;
+  background: var(--calculator-body);
+  width: 300px;
+  padding: 5px;
+  margin: 5rem auto;
 }
 
 .calculator .display {
-    width: 100%;
-    min-height: 50px;
-    background: var(--display-bg);
-    color: var(--display-text);
-    text-align: right;
-    font-size: 20px;
-    padding: 5px;
-    
-    /* This line of code allows me to break the word into other lines when its to long to contain on one line */
-    white-space: normal;      
-    word-wrap: break-word;   
-    overflow-wrap: break-word;
-    overflow: hidden;  
+  width: 100%;
+  min-height: 50px;
+  background: var(--display-bg);
+  color: var(--display-text);
+  text-align: right;
+  font-size: 20px;
+  padding: 5px;
+
+  /* This line of code allows me to break the word into other lines when its to long to contain on one line */
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
 }
 
-.display .down_display{ 
-    display: flex;
-    justify-content: space-between;
+.display .down_display {
+  display: flex;
+  justify-content: space-between;
 }
 .buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 2px;
-
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 2px;
 }
 
 .btn {
-    height: 40px;
-    cursor: pointer;
-    /* background-color: var(--btn-bg); */
-    /* border: none; */
-
+  height: 40px;
+  cursor: pointer;
+  /* background-color: var(--btn-bg); */
+  /* border: none; */
 }
 #equal_btn {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    height: calc(100vh - 60px);
+    background-color: #1e1e1e;
+    flex-direction: column;
+    width: 200px;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .nav-links li {
+    margin: 20px 0;
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .container {
+    width: 80%;
+  }
+}
+
+/* Footer styles */
+.footer {
+  background-color: #1e1e1e;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.whatsapp-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 20px;
+  background-color: #25d366; /* WhatsApp green */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.whatsapp-link:hover {
+  background-color: #1ebe5d;
 }

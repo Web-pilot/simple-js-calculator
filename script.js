@@ -1,3 +1,11 @@
+// navbar
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
 const topDisplay = document.querySelector(".top_display");
 const operatorDisplay = document.querySelector("#operator_display");
 const resultDisplay = document.getElementById("result_display");
