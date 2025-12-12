@@ -1,9 +1,9 @@
 // navbar
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
 
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
 });
 
 const topDisplay = document.querySelector(".top_display");
@@ -30,56 +30,76 @@ buttons.forEach((btn) => {
     // Clear the initial 0 before adding new inputs
     //If the input is 0 remove it else just keep concatenating the pressed input
 
-    if (operatorDisplay.textContent == "") {
+    // there must be some inputs before you press equal to
+    if (btn.dataset.type !== "equal") {
+      letButtonWork(btn);
+    }
+
+    function letButtonWork(btn) {
+      //Is there and operator input?
+      if (operatorDisplay.textContent == "") {
+        removeTheInitialZeroBeforeAddingTheInput(btn);
+      } else {
+        resultDisplay.textContent += btn.textContent;
+      }
+    }
+
+    function removeTheInitialZeroBeforeAddingTheInput(btn) {
       if (topDisplay.textContent === "0") {
         topDisplay.textContent = btn.textContent;
       } else {
         topDisplay.textContent += btn.textContent;
       }
-    } else {
-      resultDisplay.textContent += btn.textContent;
     }
 
-    if(btn.dataset.type == "equal") {
-        if(operatorDisplay.textContent == "" && resultDisplay.textContent == "") return;
+    if (btn.dataset.type == "equal") {
+      if (operatorDisplay.textContent == "" && resultDisplay.textContent == "")
+        return;
 
-        const operator = operatorDisplay.textContent;
-        const operand1 = parseFloat(topDisplay.textContent);
-        const operand2 = parseFloat(resultDisplay.textContent);
-        let result = 0;
+      const operator = operatorDisplay.textContent;
+      const operand1 = parseFloat(topDisplay.textContent);
+      const operand2 = parseFloat(resultDisplay.textContent);
+      let result = 0;
 
-       switch (operator) {
+      switch (operator) {
         case "+":
-            result = operand1 + operand2;
-            resultDisplay.textContent = result;
-            operatorDisplay.textContent = "";
-            topDisplay.textContent = "";
-            break;
-       
+          result = operand1 + operand2;
+          topDisplay.textContent = result;
+          operatorDisplay.textContent = "";
+          resultDisplay.textContent = "";
+          break;
+
         case "-":
-              result = operand1 - operand2;
-            resultDisplay.textContent = result;
-            operatorDisplay.textContent = "";
-            topDisplay.textContent = "";
-            break;
+          result = operand1 - operand2;
+          topDisplay.textContent = result;
+          operatorDisplay.textContent = "";
+          resultDisplay.textContent = "";
+          break;
 
-         case "/":
-              result = operand1 / operand2;
-            resultDisplay.textContent = result;
-            operatorDisplay.textContent = "";
-            topDisplay.textContent = "";
-            break;
+        case "/":
+          if (operand2 == 0) {
+            alert("cannot devide by 0");
+            return;
 
-         case "*":
-              result = operand1 * operand2;
-            resultDisplay.textContent = result;
+          } else {
+            result = operand1 / operand2;
+            topDisplay.textContent = result;
             operatorDisplay.textContent = "";
-            topDisplay.textContent = "";
-            break;
+            resultDisplay.textContent = "";
+          }
+          break;
+
+        case "*":
+          console.log("multiplication")
+          result = operand1 * operand2;
+          topDisplay.textContent = result;
+          operatorDisplay.textContent = "";
+          resultDisplay.textContent = "";
+          break;
 
         default:
-            break;
-       }
+          break;
+      }
     }
   });
 });
